@@ -5,7 +5,7 @@ let
     my-python.withPackages (p: with p; [ validators requests ]);
   wrapper = pkgs.writeScriptBin "${name}" ''
     export PYTHONPATH=${python-with-my-packages}/${python-with-my-packages.sitePackages}
-    ${my-python}/bin/python ${./main.py} $1'';
+    ${my-python}/bin/python ${./main.py} $@'';
 in pkgs.stdenv.mkDerivation {
   name = name;
   buildInputs = [ python-with-my-packages ];
