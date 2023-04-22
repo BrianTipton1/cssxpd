@@ -47,7 +47,7 @@ if __name__ == '__main__':
         prog='cssxpd',
         description='Will search through a CSS file and recursively download additional CSS imports and write to one file',
     )
-    parser.add_argument('-u', '--url', required=False)
+    parser.add_argument('url')
     parser.add_argument('-o', '--out-file', required=False)
     parser.add_argument('-s', '--stdout',
                         action='store_true')
@@ -58,11 +58,7 @@ if __name__ == '__main__':
         print("No write and outfile supplied, exiting....")
         exit(1)
 
-    file_path = ''
-    if args.url is None:
-        file_path = input('Input a file path or url to the css file: ')
-    else:
-        file_path = args.url
+    file_path = args.url
 
     s = check_input(file_path, args.stdout)
     if not s:
